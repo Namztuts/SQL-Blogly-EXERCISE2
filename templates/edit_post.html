@@ -1,0 +1,41 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- block title -->
+{% block title %}Edit a post{% endblock %}
+<!-- block content start-->
+{% block content %}
+<h1>Edit a post</h1>
+<form
+   action="/posts/{{post.id}}/edit"
+   method="POST"
+>
+   <div>
+      <label for="edit_post_title">Edit Title</label>
+      <div>
+         <input
+            id="edit_post_title"
+            type="text"
+            name="edit_post_title"
+            value="{{post.title}}"
+         />
+      </div>
+   </div>
+   <div>
+      <label for="edit_post_content">Edit Content</label>
+      <div>
+         <input
+            id="edit_post_content"
+            type="text"
+            name="edit_post_content"
+            value="{{post.content}}"
+         />
+      </div>
+   </div>
+   <a
+      href="/posts/{{post.id}}"
+      class="cancel_button"
+      >Cancel</a
+   >
+   <button class="save_button">Save</button>
+</form>
+{% endblock %}

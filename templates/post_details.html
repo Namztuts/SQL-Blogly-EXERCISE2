@@ -1,0 +1,38 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- block title -->
+{% block title %}{{post.title}}{% endblock %}
+<!-- block content start-->
+{% block content %}
+<h1>{{post.title}}</h1>
+<p>{{post.content}}</p>
+<p>
+   By {{post.users.full_name}}
+   <i>posted @ {{post.created_at.strftime('%m-%d-%Y %I:%M %p')}}</i>
+   <!-- strftime is a jinja filter that formats the date a certain way -->
+</p>
+<div class="post_details_buttons">
+   <p>
+      <a
+         href="/users/{{post.users.id}}"
+         class="cancel_button"
+         >Cancel</a
+      >
+   </p>
+   <p>
+      <a
+         href="/posts/{{post.id}}/edit"
+         class="edit_user_button"
+         >Edit</a
+      >
+   </p>
+   <p>
+      <a
+         href="/posts/{{post.id}}/delete"
+         class="delete_user_button"
+         >Delete</a
+      >
+   </p>
+</div>
+
+{% endblock %}

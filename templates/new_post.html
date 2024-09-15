@@ -1,0 +1,47 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- block title -->
+{% block title %}Create a post{% endblock %}
+<!-- block content start-->
+{% block content %}
+<h1>Create a post for {{user.full_name}}</h1>
+<form
+   action="/users/{{user.id}}/posts/new"
+   method="POST"
+>
+   <div>
+      <label for="post_title">Enter a Title for your Post</label>
+      <div>
+         <input
+            id="post_title"
+            type="text"
+            name="post_title"
+            placeholder="Title"
+         />
+      </div>
+   </div>
+   <div>
+      <label for="post_content">Enter a Title for your Post</label>
+      <div>
+         <input
+            id="post_content"
+            type="text"
+            name="post_content"
+            placeholder="Content"
+         />
+      </div>
+   </div>
+   <div class="post_details_buttons">
+      <div class="post_cancel_button">
+         <a
+            href="/users/{{user.id}}"
+            class="cancel_button"
+            >Cancel</a
+         >
+      </div>
+      <div>
+         <button class="add_button">Add</button>
+      </div>
+   </div>
+</form>
+{% endblock %}

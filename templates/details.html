@@ -1,0 +1,50 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- block title -->
+{% block title %}{{user.full_name}}{% endblock %}
+<!-- block content start-->
+{% block content %}
+
+<div class="user_details">
+   <img
+      src="{{user.img_url}}"
+      alt="{{user.first_name}}'s picture"
+      class="user_details_img"
+   />
+
+   <div class="user_details_info">
+      <h1>{{user.full_name}}</h1>
+      <div class="user_details_buttons">
+         <p>
+            <a
+               href="/users/{{user.id}}/edit"
+               class="edit_user_button"
+               >Edit User</a
+            >
+         </p>
+         <p>
+            <a
+               href="/users/{{user.id}}/delete"
+               class="delete_user_button"
+               >Delete User</a
+            >
+         </p>
+      </div>
+   </div>
+</div>
+<div>
+   <h2>Posts</h2>
+   <ul>
+      {% for post in posts %}
+      <li>
+         <a href="/posts/{{post.id}}">{{post.title}}</a>
+      </li>
+      {% endfor %}
+   </ul>
+   <a
+      href="/users/{{user.id}}/posts/new"
+      class="add_button"
+      >Add Post</a
+   >
+</div>
+{% endblock %}
